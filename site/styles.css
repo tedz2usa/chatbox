@@ -16,6 +16,9 @@ main
 login
 	userlist
 		user
+	forms
+		form
+			pic
 
 */
 
@@ -66,6 +69,30 @@ login
 	font-size: 18px;
 	margin-top: 20px;
 	margin-bottom: 0;
+}
+
+.login-forms {
+	text-align: center;
+}
+
+.login-forms-form {
+	border: 1px solid #888;
+	border-top: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+	border-radius: 10px;
+	width: 300px;
+	display: block;
+	margin: 20px auto;
+	padding: 20px;
+}
+
+.login-forms-form-pic {
+	width: 160px;
+	height: 160px;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+	background-size: contain;
+	display: inline-block;
 }
 
 

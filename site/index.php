@@ -133,8 +133,22 @@ function get_page_mode() {
 					<?php
 				}
 				?>
-				</div>
-			</div>
+				</div><!-- End .login-userlist -->
+				<div class='login-forms'>
+				<?php
+				foreach ($users as $user) {
+					?>
+					<form class='login-forms-form' method='post' action=''>
+						<div class='login-forms-form-pic'
+							style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
+						<div class='login-forms-form-name'></div>
+					</form>
+					<?php
+				}
+				?>
+				</div><!-- End .login-forms -->
+
+			</div><!-- End .login -->
 			<?php
 
 
@@ -145,7 +159,7 @@ function get_page_mode() {
 		?>
 
 
-		</div>
+		</div> <!-- End .main -->
 
 <br><br><br><br>
 <br><br><br><br>
