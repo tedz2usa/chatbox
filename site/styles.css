@@ -1,0 +1,44 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+	font-size: 48px;
+}
+
+
+/*
+
+Namespace Prefixes:
+
+login
+	userlist
+		user
+
+*/
+
+.login {
+	text-align: center;
+}
+
+.login-caption {
+	font-size: 32px;
+}
+
+.login-userlist {
+	
+}
+
+.login-userlist-user {
+	
+}
+
+.login-userlist-user-pic {
+	
+}
+
+.login-userlist-user-name {
+	
+}
+
+
