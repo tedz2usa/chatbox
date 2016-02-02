@@ -30,6 +30,11 @@ login
 	text-align: center;
 }
 
+.login-title {
+	font-size: 48px;
+	margin-top: 140px;
+}
+
 .login-caption {
 	font-size: 32px;
 }
@@ -42,7 +47,7 @@ login
 	border: 1px solid #888;
 	border-top: 1px solid #bbb;
 	border-left: 1px solid #bbb;
-	background-color: #eee;
+	background-color: #f3f3f3;
 	display: inline-block;
 	margin: 20px;
 	padding: 40px;
@@ -53,7 +58,7 @@ login
 
 .login-userlist-user:hover {
 	cursor: pointer;
-	background-color: #ccc;
+	background-color: #ddd;
 }
 
 .login-userlist-user-pic {
@@ -98,6 +103,7 @@ login
 .login-forms-form-name {
 	font-size: 24px;
 	margin-top: 20px;
+	font-weight: bold;
 }
 
 .login-forms-form-password {
@@ -105,12 +111,21 @@ login
 	width: 180px;
 	padding: 10px 20px;
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 30px;
 	border-radius: 3px;
 	border: 1px solid #888;
 }
 
 .login-forms-form-submit {
-	
+	display: block;
+	margin: 0 auto;
+	margin-top: 10px;
+	height: 50px;
+	width: 222px;
+	padding: 10px 20px;
+	font-size: 24px; 
+	border-radius: 3px;
+	border: 1px solid #888;
+	cursor: pointer;
 }
 

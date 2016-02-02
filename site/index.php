@@ -118,7 +118,7 @@ function get_page_mode() {
 
 			?>
 			<div class='login'>
-				<h1><?php echo $settings['login_title']; ?></h1>
+				<h1 class='login-title'><?php echo $settings['login_title']; ?></h1>
 				<p class='login-caption'>Please Log In</p>
 
 
@@ -152,6 +152,7 @@ function get_page_mode() {
 						<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>
 						<input type='hidden' name='username' value='<?php echo $user->username; ?>'>
 						<input class='login-forms-form-password' type='password' name='username' placeholder='password'>
+						<input class='login-forms-form-submit' type='submit' value='Log In'>
 					</form>
 					<?php
 				}
@@ -181,7 +182,7 @@ function get_page_mode() {
 
 pre($_SESSION);
 pre($settings);
-pre($users);
+// pre($users);
 
 ?>
 		
