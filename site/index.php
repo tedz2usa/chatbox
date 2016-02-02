@@ -13,9 +13,22 @@ $users = get_app_users();
 $page_mode = get_page_mode();
 
 
-function is_logged_in() {
-	return (isset($_SESSION['user_id']));
+if (isset($_POST['username'])) {
+	pre($_POST);
+	if (authenticate_password($_POST['username'], $_POST['password'])) {
+		echo 'Authenticated!';
+		$_SESSION['username'] = $_POST['username'];
+	} else {
+		echo 'Not Authenticated!';
+	}
 }
+
+
+
+function is_logged_in() {
+	return (isset($_SESSION['username']));
+}
+
 
 
 function pre($obj) {
@@ -45,11 +58,23 @@ function get_app_settings() {
 function get_app_users() {
 	global $mysqli;
 	$users = [];
-	$res =$mysqli->query('SELECT * FROM users ORDER BY last_name');
+	$res = $mysqli->query('SELECT * FROM users ORDER BY last_name');
 	while ( $row = $res->fetch_assoc() ) {
 		$users[] = new User($row);
 	}
 	return $users;
+}
+
+
+function authenticate_password($username, $password) {
+	global $mysqli;
+	$res = $mysqli->query('SELECT * FROM users WHERE username="' . $username . '" AND pin="' . $password . '"');
+	if ( $row = $res->fetch_assoc() ) {
+		return true;
+	} else {
+		return false;
+	}
+
 }
 
 
@@ -116,6 +141,8 @@ function get_page_mode() {
 
 		if (!is_logged_in()) {
 
+			// USER IS NOT LOGGED IN.
+
 			?>
 			<div class='login'>
 				<h1 class='login-title'><?php echo $settings['login_title']; ?></h1>
@@ -153,7 +180,7 @@ function get_page_mode() {
 							style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
 						<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>
 						<input type='hidden' name='username' value='<?php echo $user->username; ?>'>
-						<input class='login-forms-form-password' type='password' name='username' placeholder='password'>
+						<input class='login-forms-form-password' type='password' name='password' placeholder='password'>
 						<input class='login-forms-form-submit' type='submit' value='Log In'>
 					</form>
 					<?php
@@ -169,6 +196,18 @@ function get_page_mode() {
 
 
 		} else {
+
+			// USER IS LOGGED INTO THE APP.
+
+			?>
+			<div class='appbar'>
+				<div class='appbar-left'>a</div>
+				<div class='appbar-right'>b</div>
+				
+			</div>
+
+
+			<?php
 
 		}
 

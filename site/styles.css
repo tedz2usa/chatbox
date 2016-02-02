@@ -1,5 +1,8 @@
 body {
 	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
 }
 
 h1 {
@@ -15,16 +18,21 @@ jsdata
 main
 login
 	userlist
-		user
 	forms
-		form
-			pic
+appbar
+	left
+	right
+
+
 
 */
 
 .jsdata {
 	display: none;
 }
+
+
+/* THE LOGIN PAGE ITEMS */
 
 .login {
 	text-align: center;
@@ -110,7 +118,7 @@ login
 
 .login-forms-form-password {
 	font-size: 24px;
-	width: 180px;
+	width: 220px;
 	padding: 10px 20px;
 	text-align: center;
 	margin-top: 30px;
@@ -123,7 +131,7 @@ login
 	margin: 0 auto;
 	margin-top: 10px;
 	height: 50px;
-	width: 222px;
+	width: 220px;
 	padding: 10px 20px;
 	font-size: 24px; 
 	border-radius: 3px;
@@ -142,3 +150,31 @@ login
 	text-decoration: underline;
 	cursor: pointer;
 }
+
+
+/* THE APPLICATION BAR */
+
+.appbar {
+	border-bottom: 1px solid #888;
+	height: 30px;
+	background-color: #eee;
+	position: relative;
+}
+
+.appbar-left {
+	border: 1px solid red;
+	display: block;
+	width: 20px;
+	position: absolute;
+	left: 0;
+}
+
+.appbar-right {
+	border: 1px solid green;
+	display: block;
+	width: 20px;
+	position: absolute;
+	right: 0;
+	text-align: right;
+}
+

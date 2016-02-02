@@ -32,6 +32,7 @@ LoginPage.userItemClicked = function(domevent) {
 	var username = $(domevent.currentTarget).data('username');
 	$('.login-forms').show();
 	$('.login-forms-form[data-username="' + username + '"]').show();
+	$('.login-forms-form[data-username="' + username + '"] input[name="password"]').focus();
 }
 
 LoginPage.gobackClicked = function(domevent) {
