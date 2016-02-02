@@ -11,11 +11,17 @@ h1 {
 
 Namespace Prefixes:
 
+jsdata
+main
 login
 	userlist
 		user
 
 */
+
+.jsdata {
+	display: none;
+}
 
 .login {
 	text-align: center;

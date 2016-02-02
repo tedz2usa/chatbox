@@ -2,25 +2,15 @@
 
 session_start();
 
-echo 'Hello!';
-
 require_once('../logs/constants.php');
 
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-echo 'Connected';
 
-pre($_SESSION);
 
 $settings = get_app_settings();
 $users = get_app_users();
-
-
-if (is_logged_in()) {
-	echo 'You are logged in!';
-} else {
-	echo 'You are not logged in!';
-}
+$page_mode = get_page_mode();
 
 
 function is_logged_in() {
@@ -88,6 +78,24 @@ class User {
 
 }
 
+/* Page Modes:
+ *
+
+login-page
+chat-page
+
+
+ * 
+ */
+
+function get_page_mode() {
+	if (is_logged_in()) {
+		return 'chat-page';
+	} else {
+		return 'login-page';
+	}
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -101,6 +109,7 @@ class User {
 		<script src='chatbox.js'></script>
 	</head>
 	<body>
+		<div class='jsdata' data-page-mode='<?php echo $page_mode; ?>'></div>
 		<div class='main'>
 
 		<?php 
@@ -144,6 +153,7 @@ class User {
 
 <?php
 
+pre($_SESSION);
 pre($settings);
 pre($users);
 
