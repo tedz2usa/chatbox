@@ -89,6 +89,7 @@ login
 	display: block;
 	margin: 40px auto;
 	padding: 60px 20px;
+	display: none;
 }
 
 .login-forms-form-pic {

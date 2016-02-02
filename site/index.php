@@ -128,7 +128,8 @@ function get_page_mode() {
 				<?php
 				foreach ($users as $user) {
 					?>
-					<div class='login-userlist-user'>
+					<div class='login-userlist-user'
+						data-username='<?php echo $user->username; ?>'>
 						<div class='login-userlist-user-pic' 
 							style='background-image: url("<?php echo $user->image_url(); ?>")'>
 						</div>
@@ -146,7 +147,8 @@ function get_page_mode() {
 				<?php
 				foreach ($users as $user) {
 					?>
-					<form class='login-forms-form' method='post' action=''>
+					<form class='login-forms-form' method='post' action=''
+						data-username='<?php echo $user->username; ?>'>
 						<div class='login-forms-form-pic'
 							style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
 						<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>

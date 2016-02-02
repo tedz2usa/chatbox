@@ -26,6 +26,15 @@ function initLoginPage() {
 }
 
 function loginUserItemClicked(domevent) {
-	log($(domevent));
+	log(domevent);
+	loginHideUI();
+	var username = $(domevent.currentTarget).data('username');
+	$('.login-forms').show();
+	$('.login-forms-form[data-username="' + username + '"]').show();
 }
 
+function loginHideUI() {
+	$('.login-forms').hide();
+	$('.login-forms-form').hide();
+	$('.login-userlist').hide();
+}
