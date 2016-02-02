@@ -26,15 +26,21 @@ login
 }
 
 .login-userlist {
-	
+
 }
 
 .login-userlist-user {
-	
+	border: 1px solid red;
+	display: inline-block;
+	margin: 20px;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .login-userlist-user-pic {
-	
+	width: 128px;
+	height: 128px;
+	background-size: contain;
 }
 
 .login-userlist-user-name {

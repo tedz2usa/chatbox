@@ -55,12 +55,39 @@ function get_app_settings() {
 function get_app_users() {
 	global $mysqli;
 	$users = [];
-	$res =$mysqli->query('SELECT * FROM users');
+	$res =$mysqli->query('SELECT * FROM users ORDER BY last_name');
 	while ( $row = $res->fetch_assoc() ) {
-		$users[] = $row;
+		$users[] = new User($row);
 	}
 	return $users;
 }
+
+
+class User {
+
+	public $id;
+	public $username;
+	public $first_name;
+	public $last_name;
+	public $pin;
+	public $image_name;
+
+	function __construct($row_record) {
+		foreach ($row_record as $key => $value ) {
+			$this->$key = $value;
+		}
+	}
+
+	function display_name() {
+		return $this->first_name . ' ' . $this->last_name;
+	}
+
+	function image_url() {
+		return '/images/profile/' . $this->image_name;
+	}
+
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -87,9 +114,10 @@ function get_app_users() {
 				foreach ($users as $user) {
 					?>
 					<div class='login-userlist-user'>
-						<div class='login-userlist-user-pic'>
+						<div class='login-userlist-user-pic' 
+							style='background-image: url("<?php echo $user->image_url(); ?>")'>
 						</div>
-						<div class='login-userlist-user-name'><?php echo $user['first_name'] . ' ' . $user['last_name'] ?></div>
+						<div class='login-userlist-user-name'><?php echo $user->display_name(); ?></div>
 					</div>
 					<?php
 				}
