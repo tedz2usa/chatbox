@@ -12,7 +12,8 @@ function init() {
 			LoginPage.init();
 			break;
 		case 'chat-page':
-			initChatPage();
+			AppBar.init();
+			//initChatPage();
 			break;
 		default:
 			break;
@@ -20,6 +21,7 @@ function init() {
 }
 
 LoginPage = {};
+AppBar = {};
 
 LoginPage.init = function() {
 	log('initting login.');
@@ -27,15 +29,15 @@ LoginPage.init = function() {
 	$('.login-forms-goback').click(LoginPage.gobackClicked)
 }
 
-LoginPage.userItemClicked = function(domevent) {
+LoginPage.userItemClicked = function(domEvent) {
 	LoginPage.hideUI();
-	var username = $(domevent.currentTarget).data('username');
+	var username = $(domEvent.currentTarget).data('username');
 	$('.login-forms').show();
 	$('.login-forms-form[data-username="' + username + '"]').show();
 	$('.login-forms-form[data-username="' + username + '"] input[name="password"]').focus();
 }
 
-LoginPage.gobackClicked = function(domevent) {
+LoginPage.gobackClicked = function(domEvent) {
 	LoginPage.hideUI();
 	$('.login-userlist').show();
 }
@@ -44,4 +46,22 @@ LoginPage.hideUI = function() {
 	$('.login-userlist').hide();
 	$('.login-forms').hide();
 	$('.login-forms-form').hide();
+}
+
+
+AppBar.init = function() {
+	$('.appbar-right-accountmenu-menu-item').click(AppBar.accountMenuItemClicked);
+}
+
+AppBar.accountMenuItemClicked = function(domEvent) {
+	log('clicked!');
+	switch ($(domEvent.currentTarget).data('menuAction')) {
+		case 'logout':
+			AppBar.logout();
+			break;
+	}
+}
+
+AppBar.logout = function() {
+	window.location.href = '/logout.php'
 }

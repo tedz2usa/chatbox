@@ -14,7 +14,7 @@
 				?>
 			</div>
 			<div class='appbar-right-accountmenu-menu'>
-				<div class='appbar-right-accountmenu-menu-item'>
+				<div class='appbar-right-accountmenu-menu-item' data-menu-action='logout'>
 					Logout
 				</div>
 			</div>

@@ -9,13 +9,6 @@ require_once('../logs/constants.php');
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 
-
-$settings = get_app_settings();
-$users = get_app_users();
-$page_mode = get_page_mode();
-
-$current_user;
-
 if (isset($_POST['username'])) {
 	if (authenticate_password($_POST['username'], $_POST['password'])) {
 		$_SESSION['username'] = $_POST['username'];
@@ -23,6 +16,15 @@ if (isset($_POST['username'])) {
 		// echo 'Not Authenticated!';
 	}
 }
+
+
+
+
+$settings = get_app_settings();
+$users = get_app_users();
+$page_mode = get_page_mode();
+
+$current_user;
 
 
 
@@ -176,7 +178,7 @@ function get_page_mode() {
 
 <?php
 
-// pre($_SESSION);
+// pre($_SESSION);ss
 // pre($settings);
 // pre($users);
 
