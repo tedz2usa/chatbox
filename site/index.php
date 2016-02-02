@@ -97,6 +97,8 @@ class User {
 		<title><?php echo $settings['application_name']; ?></title>
 		<link rel='stylesheet' href='styles.css'>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script>
+		<script src='chatbox.js'></script>
 	</head>
 	<body>
 		<div class='main'>
