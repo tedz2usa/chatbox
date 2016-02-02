@@ -156,23 +156,72 @@ appbar
 
 .appbar {
 	border-bottom: 1px solid #888;
-	height: 30px;
+	height: 60px;
 	background-color: #eee;
 	position: relative;
 }
 
 .appbar-left {
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	display: inline-block;
 	position: absolute;
 	left: 0;
 }
 
+.appbar-left-apptitle {
+	line-height: 60px;
+	padding: 0 20px;
+	font-weight: bold;
+}
+
 .appbar-right {
-	border: 1px solid green;
+	/*border: 1px solid green;*/
 	display: inline-block;
 	position: absolute;
 	right: 0;
 	text-align: right;
+}
+
+.appbar-right-accountmenu {
+	height: 60px;
+}
+
+.appbar-right-accountmenu-userlabel {
+	border-left: 1px solid #888;
+	padding: 0px 40px;
+	line-height: 60px;
+}
+
+.appbar-right-accountmenu-menu {
+	font-size: 14px;
+	border: 1px solid #888;
+	border-top: 1px solid #888;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	margin-right: 10px;
+	width: 120px;
+	display: none;
+}
+
+.appbar-right-accountmenu-menu-item {
+	text-align: center;
+	padding: 10px 10px;
+}
+
+.appbar-right-accountmenu-menu-item:hover {
+	background-color: #ddd;
+	font-weight: bold;
+}
+
+.appbar-right-accountmenu:hover .appbar-right-accountmenu-userlabel {
+	background-color: #aaa;
+	cursor: default;
+}
+
+.appbar-right-accountmenu:hover .appbar-right-accountmenu-menu {
+	border: 1px solid #333;
+	border-top: 1px solid #888;
+	display: inline-block;
+	cursor: pointer;
 }
 

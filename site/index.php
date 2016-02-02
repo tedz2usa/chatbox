@@ -158,33 +158,15 @@ function get_page_mode() {
 
 			require_once('_includes/login-fragment.php');
 
-
 		} else {
 
 			// USER IS LOGGED INTO THE APP.
-
-			?>
-			<div class='appbar'>
-				<div class='appbar-left'>
-					<?php
-					echo $settings['application_name_long'];
-					?>
-				</div>
-				<div class='appbar-right'>
-					<?php
-					echo $current_user->display_name();
-					?>
-				</div>
-				
-			</div>
-
-
-			<?php
-
+			
+			require_once('_includes/appbar-fragment.php');
+		
 		}
 
 		?>
-
 
 		</div> <!-- End .main -->
 
@@ -194,8 +176,8 @@ function get_page_mode() {
 
 <?php
 
-pre($_SESSION);
-pre($settings);
+// pre($_SESSION);
+// pre($settings);
 // pre($users);
 
 ?>
