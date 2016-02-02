@@ -1,6 +1,8 @@
 <?php
 
+
 session_start();
+// session_destroy();
 
 require_once('../logs/constants.php');
 
@@ -14,20 +16,19 @@ $page_mode = get_page_mode();
 
 $current_user;
 
-if (is_logged_in()) {
-	$current_user = User::find_by_username($_SESSION['username']);
-} 
-
 if (isset($_POST['username'])) {
-	pre($_POST);
 	if (authenticate_password($_POST['username'], $_POST['password'])) {
-		echo 'Authenticated!';
 		$_SESSION['username'] = $_POST['username'];
 	} else {
-		echo 'Not Authenticated!';
+		// echo 'Not Authenticated!';
 	}
 }
 
+
+
+if (is_logged_in()) {
+	$current_user = User::find_by_username($_SESSION['username']);
+} 
 
 
 function is_logged_in() {
@@ -155,56 +156,7 @@ function get_page_mode() {
 
 			// USER IS NOT LOGGED IN.
 
-			?>
-			<div class='login'>
-				<h1 class='login-title'><?php echo $settings['application_name_long']; ?></h1>
-				<p class='login-caption'>Please Log In</p>
-
-
-				<!-- USER SELECTION LIST -->
-
-				<div class='login-userlist'>
-					<?php
-					foreach ($users as $user) {
-						?>
-						<div class='login-userlist-user'
-							data-username='<?php echo $user->username; ?>'>
-							<div class='login-userlist-user-pic' 
-								style='background-image: url("<?php echo $user->image_url(); ?>")'>
-							</div>
-							<div class='login-userlist-user-name'><?php echo $user->display_name(); ?></div>
-						</div>
-						<?php
-					}
-					?>
-				</div><!-- End .login-userlist -->
-
-
-				<!-- LOGIN FORMS -->
-
-				<div class='login-forms'>
-					<?php
-					foreach ($users as $user) {
-						?>
-						<form class='login-forms-form' method='post' action=''
-							data-username='<?php echo $user->username; ?>'>
-							<div class='login-forms-form-pic'
-								style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
-							<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>
-							<input type='hidden' name='username' value='<?php echo $user->username; ?>'>
-							<input class='login-forms-form-password' type='password' name='password' placeholder='password'>
-							<input class='login-forms-form-submit' type='submit' value='Log In'>
-						</form>
-						<?php
-					}
-					?>
-					<div class='login-forms-goback'>Go Back</div>
-				</div><!-- End .login-forms -->
-
-
-
-			</div><!-- End .login -->
-			<?php
+			require_once('_includes/login-fragment.php');
 
 
 		} else {
