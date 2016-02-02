@@ -163,16 +163,14 @@ appbar
 
 .appbar-left {
 	border: 1px solid red;
-	display: block;
-	width: 20px;
+	display: inline-block;
 	position: absolute;
 	left: 0;
 }
 
 .appbar-right {
 	border: 1px solid green;
-	display: block;
-	width: 20px;
+	display: inline-block;
 	position: absolute;
 	right: 0;
 	text-align: right;

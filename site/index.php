@@ -12,6 +12,11 @@ $settings = get_app_settings();
 $users = get_app_users();
 $page_mode = get_page_mode();
 
+$current_user;
+
+if (is_logged_in()) {
+	$current_user = User::find_by_username($_SESSION['username']);
+} 
 
 if (isset($_POST['username'])) {
 	pre($_POST);
@@ -44,7 +49,7 @@ function get_app_settings() {
 	$settings = array(
 		// Default values.
 		'application_name' => 'My Chatroom',
-		'login_title' => 'Team Collaboration'
+		'application_name_long' => 'Team Collaboration'
 	);
 
 	$res = $mysqli->query('SELECT * FROM settings');
@@ -87,10 +92,13 @@ class User {
 	public $pin;
 	public $image_name;
 
+	private static $users_by_username = [];
+
 	function __construct($row_record) {
 		foreach ($row_record as $key => $value ) {
 			$this->$key = $value;
 		}
+		User::$users_by_username[$this->username] = $this;
 	}
 
 	function display_name() {
@@ -99,6 +107,10 @@ class User {
 
 	function image_url() {
 		return '/images/profile/' . $this->image_name;
+	}
+
+	public static function find_by_username($username) {
+		return User::$users_by_username[$username];
 	}
 
 }
@@ -145,47 +157,47 @@ function get_page_mode() {
 
 			?>
 			<div class='login'>
-				<h1 class='login-title'><?php echo $settings['login_title']; ?></h1>
+				<h1 class='login-title'><?php echo $settings['application_name_long']; ?></h1>
 				<p class='login-caption'>Please Log In</p>
 
 
 				<!-- USER SELECTION LIST -->
 
 				<div class='login-userlist'>
-				<?php
-				foreach ($users as $user) {
-					?>
-					<div class='login-userlist-user'
-						data-username='<?php echo $user->username; ?>'>
-						<div class='login-userlist-user-pic' 
-							style='background-image: url("<?php echo $user->image_url(); ?>")'>
-						</div>
-						<div class='login-userlist-user-name'><?php echo $user->display_name(); ?></div>
-					</div>
 					<?php
-				}
-				?>
+					foreach ($users as $user) {
+						?>
+						<div class='login-userlist-user'
+							data-username='<?php echo $user->username; ?>'>
+							<div class='login-userlist-user-pic' 
+								style='background-image: url("<?php echo $user->image_url(); ?>")'>
+							</div>
+							<div class='login-userlist-user-name'><?php echo $user->display_name(); ?></div>
+						</div>
+						<?php
+					}
+					?>
 				</div><!-- End .login-userlist -->
 
 
 				<!-- LOGIN FORMS -->
 
 				<div class='login-forms'>
-				<?php
-				foreach ($users as $user) {
-					?>
-					<form class='login-forms-form' method='post' action=''
-						data-username='<?php echo $user->username; ?>'>
-						<div class='login-forms-form-pic'
-							style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
-						<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>
-						<input type='hidden' name='username' value='<?php echo $user->username; ?>'>
-						<input class='login-forms-form-password' type='password' name='password' placeholder='password'>
-						<input class='login-forms-form-submit' type='submit' value='Log In'>
-					</form>
 					<?php
-				}
-				?>
+					foreach ($users as $user) {
+						?>
+						<form class='login-forms-form' method='post' action=''
+							data-username='<?php echo $user->username; ?>'>
+							<div class='login-forms-form-pic'
+								style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
+							<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>
+							<input type='hidden' name='username' value='<?php echo $user->username; ?>'>
+							<input class='login-forms-form-password' type='password' name='password' placeholder='password'>
+							<input class='login-forms-form-submit' type='submit' value='Log In'>
+						</form>
+						<?php
+					}
+					?>
 					<div class='login-forms-goback'>Go Back</div>
 				</div><!-- End .login-forms -->
 
@@ -201,8 +213,16 @@ function get_page_mode() {
 
 			?>
 			<div class='appbar'>
-				<div class='appbar-left'>a</div>
-				<div class='appbar-right'>b</div>
+				<div class='appbar-left'>
+					<?php
+					echo $settings['application_name_long'];
+					?>
+				</div>
+				<div class='appbar-right'>
+					<?php
+					echo $current_user->display_name();
+					?>
+				</div>
 				
 			</div>
 
