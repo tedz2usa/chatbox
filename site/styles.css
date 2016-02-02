@@ -82,8 +82,8 @@ login
 	border-radius: 10px;
 	width: 300px;
 	display: block;
-	margin: 20px auto;
-	padding: 20px;
+	margin: 40px auto;
+	padding: 60px 20px;
 }
 
 .login-forms-form-pic {
@@ -95,4 +95,22 @@ login
 	display: inline-block;
 }
 
+.login-forms-form-name {
+	font-size: 24px;
+	margin-top: 20px;
+}
+
+.login-forms-form-password {
+	font-size: 24px;
+	width: 180px;
+	padding: 10px 20px;
+	text-align: center;
+	margin-top: 10px;
+	border-radius: 3px;
+	border: 1px solid #888;
+}
+
+.login-forms-form-submit {
+	
+}
 

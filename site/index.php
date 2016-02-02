@@ -120,6 +120,10 @@ function get_page_mode() {
 			<div class='login'>
 				<h1><?php echo $settings['login_title']; ?></h1>
 				<p class='login-caption'>Please Log In</p>
+
+
+				<!-- USER SELECTION LIST -->
+
 				<div class='login-userlist'>
 				<?php
 				foreach ($users as $user) {
@@ -134,6 +138,10 @@ function get_page_mode() {
 				}
 				?>
 				</div><!-- End .login-userlist -->
+
+
+				<!-- LOGIN FORMS -->
+
 				<div class='login-forms'>
 				<?php
 				foreach ($users as $user) {
@@ -141,12 +149,16 @@ function get_page_mode() {
 					<form class='login-forms-form' method='post' action=''>
 						<div class='login-forms-form-pic'
 							style='background-image: url("<?php echo $user->image_url(); ?>")'></div>
-						<div class='login-forms-form-name'></div>
+						<div class='login-forms-form-name'><?php echo $user->display_name(); ?></div>
+						<input type='hidden' name='username' value='<?php echo $user->username; ?>'>
+						<input class='login-forms-form-password' type='password' name='username' placeholder='password'>
 					</form>
 					<?php
 				}
 				?>
 				</div><!-- End .login-forms -->
+
+
 
 			</div><!-- End .login -->
 			<?php
