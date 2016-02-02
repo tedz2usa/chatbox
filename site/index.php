@@ -159,6 +159,7 @@ function get_page_mode() {
 					<?php
 				}
 				?>
+					<div class='login-forms-goback'>Go Back</div>
 				</div><!-- End .login-forms -->
 
 

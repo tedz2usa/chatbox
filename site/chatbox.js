@@ -9,7 +9,7 @@ function init() {
 	var pageMode = $('.jsdata').data('pageMode');
 	switch (pageMode) {
 		case 'login-page':
-			initLoginPage();
+			LoginPage.init();
 			break;
 		case 'chat-page':
 			initChatPage();
@@ -19,22 +19,28 @@ function init() {
 	}
 }
 
+LoginPage = {};
 
-function initLoginPage() {
+LoginPage.init = function() {
 	log('initting login.');
-	$('.login-userlist-user').click(loginUserItemClicked);
+	$('.login-userlist-user').click(LoginPage.userItemClicked);
+	$('.login-forms-goback').click(LoginPage.gobackClicked)
 }
 
-function loginUserItemClicked(domevent) {
-	log(domevent);
-	loginHideUI();
+LoginPage.userItemClicked = function(domevent) {
+	LoginPage.hideUI();
 	var username = $(domevent.currentTarget).data('username');
 	$('.login-forms').show();
 	$('.login-forms-form[data-username="' + username + '"]').show();
 }
 
-function loginHideUI() {
+LoginPage.gobackClicked = function(domevent) {
+	LoginPage.hideUI();
+	$('.login-userlist').show();
+}
+
+LoginPage.hideUI = function() {
+	$('.login-userlist').hide();
 	$('.login-forms').hide();
 	$('.login-forms-form').hide();
-	$('.login-userlist').hide();
 }
