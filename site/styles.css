@@ -26,25 +26,40 @@ login
 }
 
 .login-userlist {
-
+	margin: 40px;
 }
 
 .login-userlist-user {
-	border: 1px solid red;
+	border: 1px solid #888;
+	border-top: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+	background-color: #eee;
 	display: inline-block;
 	margin: 20px;
-	padding: 10px;
+	padding: 40px;
 	border-radius: 10px;
+	text-align: center;
+	width: 140px;
+}
+
+.login-userlist-user:hover {
+	cursor: pointer;
+	background-color: #ccc;
 }
 
 .login-userlist-user-pic {
-	width: 128px;
-	height: 128px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #aaa;
+	border-radius: 10px;
 	background-size: contain;
+	display: inline-block;
 }
 
 .login-userlist-user-name {
-	
+	font-size: 18px;
+	margin-top: 20px;
+	margin-bottom: 0;
 }
 
 
